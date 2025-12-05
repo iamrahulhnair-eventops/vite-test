@@ -2,3 +2,12 @@
 
 #Ignore vscode AI rules
 .github\instructions\codacy.instructions.md
+
+.idea/
+.vscode/
+node_modules/
+dist/
+.env
+.DS_Store
+coverage/
+*.log
