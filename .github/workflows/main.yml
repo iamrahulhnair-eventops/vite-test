@@ -15,10 +15,6 @@ jobs:
     name: Build, Test, and Coverage Check
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: eventops-test
-
     steps:
       # 1. Checkout Code
       - name: Checkout Repository
@@ -46,4 +42,4 @@ jobs:
         with:
           # Remember to set this secret in your GitHub Repository Settings
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: "eventops-test/coverage/lcov.info"
+          coverage-reports: "coverage/lcov.info"
