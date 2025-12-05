@@ -1,0 +1,33 @@
+name: Tests & Codacy Coverage
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-and-coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests with Coverage
+        run: npm run coverage
+
+      - name: Upload Coverage to Codacy
+        env:
+          CODACY_PROJECT_TOKEN: 54ee1fd269944b22abf2322ee33fee2d
+        run: |
+          bash <(curl -Ls https://coverage.codacy.com/get.sh) \
+            report \
+            -r coverage/lcov.info

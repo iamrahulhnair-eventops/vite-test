@@ -8,7 +8,7 @@ export default defineConfig({
     environment: 'jsdom',      // ✅ browser-like DOM
     setupFiles: './src/setupTests.ts', // optional: jest-dom matchers
     coverage: {
-      provider: 'c8',
+      provider: 'v8',
       reporter: ['text', 'lcov'],
     },
   },
