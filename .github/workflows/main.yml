@@ -41,5 +41,5 @@ jobs:
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           # Remember to set this secret in your GitHub Repository Settings
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          project-token: 54ee1fd269944b22abf2322ee33fee2d
           coverage-reports: "coverage/lcov.info"
