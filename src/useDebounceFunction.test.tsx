@@ -27,7 +27,7 @@ describe('useDebounceFunction', () => {
     });
 
     expect(mockFn).toHaveBeenCalledTimes(1);
-    expect(mockFn).toHaveBeenCalledWith('test');
+    expect(mockFn).toHaveBeenCalledWith('testaaa');
   });
 
   it('should reset the timer if value changes before delay', () => {
