@@ -4,17 +4,17 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - main  # Trigger on every push to the main branch
+      - main # Trigger on every push to the main branch
   pull_request:
     branches:
-      - main  # Trigger when a Pull Request targets the main branch
-      
+      - main # Trigger when a Pull Request targets the main branch
+
 # Define the jobs to run
 jobs:
   build_test_and_coverage:
     name: Build, Test, and Coverage Check
     runs-on: ubuntu-latest
-    
+
     steps:
       # 1. Checkout Code
       - name: Checkout Repository
@@ -24,8 +24,8 @@ jobs:
       - name: Setup Node.js v24.7.0
         uses: actions/setup-node@v4
         with:
-          node-version: '24.7.0'
-          cache: 'npm'
+          node-version: "24.7.0"
+          cache: "npm"
 
       # 3. Install Dependencies
       - name: Install Dependencies
@@ -35,11 +35,11 @@ jobs:
       - name: Run Tests and Generate LCOV Coverage
         # This executes your Vitest coverage command
         run: npm run coverage
-        
+
       # 5. Code Quality Integration: Upload Codacy Coverage
       - name: Upload coverage to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           # Remember to set this secret in your GitHub Repository Settings
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: './coverage/lcov.info'
+          project-token: 54ee1fd269944b22abf2322ee33fee2d
+          coverage-reports: "coverage/lcov.info"
