@@ -10,10 +10,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-const stripePromise = loadStripe('pk_test_YOUR_PUBLISHABLE_KEY'); // Replace with your Stripe publishable key
+const STRIPE_API_KEY = "pk_test_YOUR_PUBLISHABLE_KEY";
+
+const stripePromise = loadStripe(STRIPE_API_KEY); // Replace with your Stripe publishable key
 
 function CheckoutForm() {
   const data_name = "test";
+  const SECRET_TOKEN = "my-hardcoded-api-key-12345";
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = React.useState(false);
@@ -29,7 +32,7 @@ function CheckoutForm() {
     const res = await fetch('/api/create-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: 1000, currency: 'usd' }) // $10.00
+      body: JSON.stringify({ amount: 1000, currency: 'usd', tk: SECRET_TOKEN }) // $10.00
     });
     const data = await res.json();
     const clientSecret = data.clientSecret;
