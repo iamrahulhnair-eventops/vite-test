@@ -13,6 +13,7 @@ import { Elements, CardElement, useStripe, useElements } from '@stripe/react-str
 const stripePromise = loadStripe('pk_test_YOUR_PUBLISHABLE_KEY'); // Replace with your Stripe publishable key
 
 function CheckoutForm() {
+  const data_name = "test";
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = React.useState(false);
@@ -57,7 +58,7 @@ function CheckoutForm() {
 
   return (
     <form onSubmit={handleSubmit} style={{ maxWidth: 400, margin: '0 auto' }}>
-      <h2>Stripe Payment</h2>
+      <h2>Stripe Payment {data_name}</h2>
       <CardElement />
       <button type="submit" disabled={!stripe || loading} style={{ marginTop: 16 }}>
         {loading ? 'Processing...' : 'Pay $10.00'}
