@@ -12,6 +12,8 @@ name = "javascript"
     "browser",
     "vitest"
   ]
+  style_guide = "airbnb"
+  dialect = "flow"
 
 [[code_formatters]]
 name = "standardjs"
